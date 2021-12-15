@@ -41,6 +41,11 @@ namespace IdentityManager
                 options.Lockout.MaxFailedAccessAttempts = 5;
             });
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Home/AccessDenied");
+            });
+
             services.AddAuthentication().AddFacebook(options =>
             {
                 options.AppId = "460981718787136";
